@@ -12,12 +12,13 @@ operator fun ClosedFloatingPointRange<Double>.times(other: ClosedFloatingPointRa
 	max(start, other.start)..min(endInclusive, other.endInclusive)
 
 /**
- * 等分区间
+ * 在区间中等间隔采样
+ * @param n 样点数量
  * @return 等分点（包括两端点）
  */
-operator fun ClosedFloatingPointRange<Double>.div(t: Int): List<Double> {
+infix fun ClosedFloatingPointRange<Double>.sample(n: Int): List<Double> {
 	assert(start < endInclusive)
-	assert(t >= 2)
-	val step = (endInclusive - start) / (t - 1) //步长
-	return List(t) { i -> start + i * step }
+	assert(n >= 2)
+	val step = (endInclusive - start) / (n - 1) //步长
+	return List(n) { i -> start + i * step }
 }
