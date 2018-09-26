@@ -16,9 +16,15 @@ operator fun ClosedFloatingPointRange<Double>.times(other: ClosedFloatingPointRa
  * @param n 样点数量
  * @return 等分点（包括两端点）
  */
-infix fun ClosedFloatingPointRange<Double>.sample(n: Int): List<Double> {
-	assert(start < endInclusive)
-	assert(n >= 2)
-	val step = (endInclusive - start) / (n - 1) //步长
-	return List(n) { i -> start + i * step }
-}
+fun ClosedFloatingPointRange<Double>.sampleOrNull(n: Int): List<Double>? =
+	takeIf { start < endInclusive && n >= 2 }
+		?.run {
+			val step = ((endInclusive - start) / (n - 1))
+			List(n) { i -> start + i * step }
+		}
+
+/**
+ * 将不会返回 null
+ */
+infix fun ClosedFloatingPointRange<Double>.sample(n: Int) =
+	sampleOrNull(n) ?: throw IllegalArgumentException("some thing wrong")
