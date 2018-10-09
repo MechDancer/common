@@ -1,10 +1,10 @@
-package org.mechdancer.map2d
+package org.mechdancer.common.map2d
 
-import org.mechdancer.util.then
+import org.mechdancer.common.then
 
 /** 可变二维映射 */
 class MutablePairMap2D<T, U, V>(map: Map<Pair<T, U>, V> = mapOf()) :
-	IMutableMap2D<T, U, V> by MutablePairMap2DCore(map) {
+		IMutableMap2D<T, U, V> by MutablePairMap2DCore(map) {
 	private class MutablePairMap2DCore<T, U, V>
 	(map: Map<Pair<T, U>, V>) :
 		MutableMap<Pair<T, U>, V> by map.toMutableMap(),

@@ -1,4 +1,4 @@
-package org.mechdancer.map2d
+package org.mechdancer.common.map2d
 
 /** 求两离散集合的笛卡尔积 */
 infix fun <A, B> Set<A>.descartes(other: Set<B>) =
@@ -12,8 +12,8 @@ operator fun <T, V> ICompleteSymmetricMap2D<T, V>.plusAssign(t: T) = put(t)
 
 /** 构造二维映射 */
 fun <T, U, V> map(t: Iterable<T>, u: Iterable<U>, block: (T, U) -> V): IMap2D<T, U, V> =
-	PairMap2D((t.toSet() descartes u.toSet())
-		.associate { it to block(it.first, it.second) })
+		PairMap2D((t.toSet() descartes u.toSet())
+				.associate { it to block(it.first, it.second) })
 
 /** 展开对称二维映射 */
 fun <T, V> map(set: Iterable<T>, block: (T, T) -> V): IMap2D<T, T, V> =
@@ -25,11 +25,11 @@ fun <T, V> stretch2D(t: Iterable<T>, block: (T, T) -> V): ICompleteSymmetricMap2
 
 /** 转不可变二维映射 */
 fun <T, U, V> IMap2D<T, U, V>.toMap2D(): IMap2D<T, U, V> =
-	PairMap2D(toPairMap())
+		PairMap2D(toPairMap())
 
 /** 转不可变二维映射 */
 fun <T, U, V> IMap2D<T, U, V>.toMutableMap2D(): IMutableMap2D<T, U, V> =
-	MutablePairMap2D(toPairMap())
+		MutablePairMap2D(toPairMap())
 
 /** 转不可变二维映射 */
 fun <T, U, V> IMap2D<T, U, V>.fillBy(block: (T, U) -> V): ICompleteMap2D<T, U, V> =
@@ -40,7 +40,7 @@ fun <T, U, V> IMap2D<T, U, V>.fillBy(block: (T, U) -> V): ICompleteMap2D<T, U, V
 
 /** 值映射到另一表 */
 fun <T, U, V, V1> IMap2D<T, U, V>.mapValue(block: (V) -> V1): IMap2D<T, U, V1> =
-	PairMap2D(toPairMap().mapValues { block(it.value) })
+		PairMap2D(toPairMap().mapValues { block(it.value) })
 
 /** 通用转字符串 */
 fun <T, U, V> IMap2D<T, U, V>.viewBy(

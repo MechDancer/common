@@ -1,4 +1,4 @@
-package org.mechdancer.map2d
+package org.mechdancer.common.map2d
 
 /**
  * 自动填充对称二维映射

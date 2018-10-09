@@ -1,6 +1,6 @@
-package org.mechdancer.map2d
+package org.mechdancer.common.map2d
 
-import org.mechdancer.util.then
+import org.mechdancer.common.then
 
 /**
  * 完全对称表
@@ -24,8 +24,8 @@ class CompleteSymmetricPairMap2D<T, V>(map: (T, T) -> V)
 
 	private class CompleteSymmetricPairMap2DCore<T, V>
 	(override val map: (T, T) -> V) :
-		MutableMap<Key<T>, V> by mutableMapOf(),
-		ICompleteSymmetricMap2D<T, V> {
+			MutableMap<Key<T>, V> by mutableMapOf(),
+			ICompleteSymmetricMap2D<T, V> {
 		override val keys0 = mutableSetOf<T>()
 		override val keys1 get() = keys0
 		override fun values0(t: T) = keys0.associate { it to this[t, it] }

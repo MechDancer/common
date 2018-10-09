@@ -1,4 +1,4 @@
-package org.mechdancer.map2d
+package org.mechdancer.common.map2d
 
 /** 二维映射 */
 class PairMap2D<T, U, V>(map: Map<Pair<T, U>, V>) :
