@@ -13,7 +13,7 @@ import kotlin.reflect.jvm.jvmErasure
 annotation class PropertyDelegate(val name: String = ""/*, val type: KClass<*> = PropertyDelegate::class*/)
 
 
-fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
+private fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 
 	private lateinit var url: URL
 
@@ -37,8 +37,8 @@ fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 
 
 	override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-		val anno = property.findAnnotation<PropertyDelegate>()
-		val name = anno
+		val annotation = property.findAnnotation<PropertyDelegate>()
+		val name = annotation
 				?.name
 				?.takeIf { it.isNotBlank() }
 				?: property.name
@@ -58,8 +58,8 @@ fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 	}
 
 	override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
-		val anno = property.findAnnotation<PropertyDelegate>()
-		val name = anno
+		val annotation = property.findAnnotation<PropertyDelegate>()
+		val name = annotation
 				?.name
 				?.takeIf { it.isNotBlank() }
 				?: property.name
@@ -67,4 +67,9 @@ fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 		File(url.toURI()).outputStream().use { properties.store(it, "") }
 	}
 
+}
+
+
+abstract class PropertyList<T>(path: String) {
+	protected val delegate = properties<T>(path)
 }
