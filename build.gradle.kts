@@ -45,5 +45,5 @@ configure<PublishExtension> {
 	artifactId = "common"
 	publishVersion = version.toString()
 	desc = "common util"
-	website = "https://github.com/MechDancer/consoleparsere"
+	website = "https://github.com/MechDancer/common"
 }
