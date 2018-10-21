@@ -10,12 +10,12 @@ class CompleteSymmetricPairMap2D<T, V>(map: (T, T) -> V)
 
 	private class Key<T>(private val t0: T, private val t1: T) {
 		override fun equals(other: Any?) =
-				(other as? Key<*>)?.let {
-					(t0 == it.t0 && t1 == it.t1) || (t0 == it.t1 && t1 == it.t0)
-				} == true
+			(other as? Key<*>)?.let {
+				(t0 == it.t0 && t1 == it.t1) || (t0 == it.t1 && t1 == it.t0)
+			} == true
 
 		override fun hashCode() =
-				(t0?.hashCode() ?: 0) + (t1?.hashCode() ?: 0)
+			(t0?.hashCode() ?: 0) + (t1?.hashCode() ?: 0)
 
 		infix fun <V> use(block: (T, T) -> V) = block(t0, t1)
 
@@ -24,8 +24,8 @@ class CompleteSymmetricPairMap2D<T, V>(map: (T, T) -> V)
 
 	private class CompleteSymmetricPairMap2DCore<T, V>
 	(override val map: (T, T) -> V) :
-			MutableMap<Key<T>, V> by mutableMapOf(),
-			ICompleteSymmetricMap2D<T, V> {
+		MutableMap<Key<T>, V> by mutableMapOf(),
+		ICompleteSymmetricMap2D<T, V> {
 		override val keys0 = mutableSetOf<T>()
 		override val keys1 get() = keys0
 		override fun values0(t: T) = keys0.associate { it to this[t, it] }
@@ -50,8 +50,8 @@ class CompleteSymmetricPairMap2D<T, V>(map: (T, T) -> V)
 		override fun removeAll(t: Iterable<T>) = t.forEach(::remove)
 
 		override fun toPairMap() =
-				this.map { it.key.toPair() to it.value }.toMutableList()
-						.apply { addAll(map { it.first.second to it.first.first to it.second }) }
-						.toMap()
+			this.map { it.key.toPair() to it.value }.toMutableList()
+				.apply { addAll(map { it.first.second to it.first.first to it.second }) }
+				.toMap()
 	}
 }

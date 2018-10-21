@@ -10,9 +10,9 @@ object Unsafe {
 	@PublishedApi
 	internal val unsafe by lazy {
 		SunUnsafe::class.java
-				.getDeclaredField("theUnsafe")
-				.apply { isAccessible = true }[null]
-				.unsafeCast<SunUnsafe>()
+			.getDeclaredField("theUnsafe")
+			.apply { isAccessible = true }[null]
+			.unsafeCast<SunUnsafe>()
 	}
 
 	object Class {
@@ -21,8 +21,8 @@ object Unsafe {
 		fun staticFieldOffset(field: Field) = unsafe.staticFieldOffset(field)
 
 		inline fun <reified T : Any> newInstance() =
-				unsafe.allocateInstance(T::class.java)
-						.unsafeCast<T>()
+			unsafe.allocateInstance(T::class.java)
+				.unsafeCast<T>()
 
 		fun <T> put(obj: Any, field: Field, value: T) = with(unsafe) {
 			when (value) {
@@ -44,17 +44,17 @@ object Unsafe {
 		fun reallocate(address: Long, size: Long) = unsafe.reallocateMemory(address, size)
 
 		fun <T> put(address: Long, value: T) =
-				with(unsafe) {
-					when (value) {
-						is Char    -> putChar(address, value)
-						is Byte    -> putByte(address, value)
-						is Short   -> putShort(address, value)
-						is Long    -> putLong(address, value)
-						is Double  -> putDouble(address, value)
-						is Int     -> putInt(address, value)
-						else       -> throw UnsupportedOperationException()
-					}
+			with(unsafe) {
+				when (value) {
+					is Char   -> putChar(address, value)
+					is Byte   -> putByte(address, value)
+					is Short  -> putShort(address, value)
+					is Long   -> putLong(address, value)
+					is Double -> putDouble(address, value)
+					is Int    -> putInt(address, value)
+					else      -> throw UnsupportedOperationException()
 				}
+			}
 	}
 
 	object Array {

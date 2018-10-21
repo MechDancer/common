@@ -25,7 +25,7 @@ private fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 			} catch (ignore: Exception) {
 				try {
 					ClassLoader.getSystemClassLoader()
-							.getResourceAsStream(path).use { p.load(it) }
+						.getResourceAsStream(path).use { p.load(it) }
 					ClassLoader.getSystemResource(path)
 				} catch (ignore: Exception) {
 					FileInputStream(path).use { p.load(it) }
@@ -39,9 +39,9 @@ private fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 	override fun getValue(thisRef: Any?, property: KProperty<*>): T {
 		val annotation = property.findAnnotation<PropertyDelegate>()
 		val name = annotation
-				?.name
-				?.takeIf { it.isNotBlank() }
-				?: property.name
+			?.name
+			?.takeIf { it.isNotBlank() }
+			?: property.name
 //		val type=anno
 //				?.type
 //				?.takeIf { it!=PropertyDelegate::class }
@@ -52,7 +52,7 @@ private fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 		return when {
 			type == Boolean::class           -> value.toString().toBoolean()
 			type.isSubclassOf(Number::class) -> type.javaObjectType
-					.getDeclaredMethod("parse${type.simpleName}", String::class.java)(type)
+				.getDeclaredMethod("parse${type.simpleName}", String::class.java)(type)
 			else                             -> value
 		} as T
 	}
@@ -60,9 +60,9 @@ private fun <T> properties(path: String) = object : ReadWriteProperty<Any?, T> {
 	override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
 		val annotation = property.findAnnotation<PropertyDelegate>()
 		val name = annotation
-				?.name
-				?.takeIf { it.isNotBlank() }
-				?: property.name
+			?.name
+			?.takeIf { it.isNotBlank() }
+			?: property.name
 		properties[name] = value.toString()
 		File(url.toURI()).outputStream().use { properties.store(it, "") }
 	}

@@ -19,8 +19,8 @@ sealed class BooleanExt<out T> {
 }
 
 inline fun <T> Boolean.yes(block: () -> T) =
-		if (this) Data(block())
-		else Otherwise
+	if (this) Data(block())
+	else Otherwise
 
 inline fun <T> BooleanExt<T>.otherwise(block: () -> T): T = when (this) {
 	is Otherwise -> block()
