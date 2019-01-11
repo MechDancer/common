@@ -1,5 +1,6 @@
-package org.mechdancer.common
+package org.mechdancer.common.util
 
+import org.mechdancer.common.ext.unsafeCast
 import sun.misc.Unsafe
 import java.lang.reflect.Field
 

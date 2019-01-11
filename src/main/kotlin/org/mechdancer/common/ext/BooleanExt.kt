@@ -1,7 +1,7 @@
-package org.mechdancer.common
+package org.mechdancer.common.ext
 
-import org.mechdancer.common.BooleanExt.Data
-import org.mechdancer.common.BooleanExt.Otherwise
+import org.mechdancer.common.ext.BooleanExt.Data
+import org.mechdancer.common.ext.BooleanExt.Otherwise
 
 /** bool = true  则执行代码块 */
 fun Boolean.then(block: () -> Unit) = also { if (it) block() }

@@ -1,5 +1,8 @@
 package org.mechdancer.common
 
+import org.mechdancer.common.ext.otherwise
+import org.mechdancer.common.ext.then
+
 class CallOnce internal constructor(private val failedOnException: Boolean,
                                     private val block: () -> Unit) : () -> Unit {
 

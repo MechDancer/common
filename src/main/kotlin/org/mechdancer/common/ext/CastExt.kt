@@ -1,4 +1,4 @@
-package org.mechdancer.common
+package org.mechdancer.common.ext
 
 inline fun <reified T> Any?.unsafeCast() = this as T
 
