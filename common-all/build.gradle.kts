@@ -17,11 +17,11 @@ task<Jar>("sourcesJar") {
 configure<PublishExtension> {
     userOrg = "mechdancer"
     groupId = "org.mechdancer"
-    artifactId = "common-all"
+    artifactId = project.name
     publishVersion = version.toString()
     desc = "common utilities"
-    website = "https://github.com/MechDancer/common/common-all"
-    issueTracker = "https://github.com/MechDancer/common"
-    repository = "https://github.com/MechDancer/common.git"
+    website = extra["publishWebsite"].toString() + artifactId
+    issueTracker = extra["publishIssueTracker"].toString()
+    repository = extra["publishRepository"].toString()
     setLicences("WTFPL")
 }

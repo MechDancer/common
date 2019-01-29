@@ -7,6 +7,7 @@ apply {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    
     testImplementation("junit", "junit", "4.12")
 }
 
@@ -24,11 +25,11 @@ tasks.withType<KotlinCompile> {
 configure<PublishExtension> {
     userOrg = "mechdancer"
     groupId = "org.mechdancer"
-    artifactId = "common-extension"
+    artifactId = project.name
     publishVersion = version.toString()
     desc = "common extensions"
-    website = "https://github.com/MechDancer/common/common-extension"
-    issueTracker = "https://github.com/MechDancer/common"
-    repository = "https://github.com/MechDancer/common.git"
+    website = extra["publishWebsite"].toString() + artifactId
+    issueTracker = extra["publishIssueTracker"].toString()
+    repository = extra["publishRepository"].toString()
     setLicences("WTFPL")
 }

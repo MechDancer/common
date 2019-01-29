@@ -7,6 +7,7 @@ apply {
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(project(":common-extension"))
+
     testImplementation("junit", "junit", "4.12")
 }
 
@@ -18,11 +19,11 @@ task<Jar>("sourcesJar") {
 configure<PublishExtension> {
     userOrg = "mechdancer"
     groupId = "org.mechdancer"
-    artifactId = "common-concurrent"
+    artifactId = project.name
     publishVersion = version.toString()
     desc = "common concurrent utilities"
-    website = "https://github.com/MechDancer/common/common-concurrent"
-    issueTracker = "https://github.com/MechDancer/common"
-    repository = "https://github.com/MechDancer/common.git"
+    website = extra["publishWebsite"].toString() + artifactId
+    issueTracker = extra["publishIssueTracker"].toString()
+    repository = extra["publishRepository"].toString()
     setLicences("WTFPL")
 }

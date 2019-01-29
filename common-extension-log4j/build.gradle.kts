@@ -4,14 +4,18 @@ apply {
     plugin("com.novoda.bintray-release")
 }
 
+val slf4jVersion = "1.8.0-beta-2"
+val log4jVersion = "1.2.17"
+
 dependencies {
     implementation(kotlin("stdlib"))
-
-    implementation("org.slf4j:slf4j-api:1.8.0-beta2")     // 日志接口层
-    implementation("org.slf4j:slf4j-log4j12:1.8.0-beta2") // 适配器
-    implementation("log4j:log4j:1.2.17")                  // 本体
-
     implementation(project(":common-concurrent"))
+    //interface
+    implementation("org.slf4j:slf4j-api:$slf4jVersion")
+    //adapter
+    implementation("org.slf4j:slf4j-log4j12:$slf4jVersion")
+    //impl
+    implementation("log4j:log4j:$log4jVersion")
 
     testImplementation("junit", "junit", "4.12")
 }
@@ -24,11 +28,11 @@ task<Jar>("sourcesJar") {
 configure<PublishExtension> {
     userOrg = "mechdancer"
     groupId = "org.mechdancer"
-    artifactId = "common-extension"
+    artifactId = project.name
     publishVersion = version.toString()
-    desc = "common extensions"
-    website = "https://github.com/MechDancer/common/common-extension"
-    issueTracker = "https://github.com/MechDancer/common"
-    repository = "https://github.com/MechDancer/common.git"
+    desc = "common extensions for log4j"
+    website = extra["publishWebsite"].toString() + artifactId
+    issueTracker = extra["publishIssueTracker"].toString()
+    repository = extra["publishRepository"].toString()
     setLicences("WTFPL")
 }
