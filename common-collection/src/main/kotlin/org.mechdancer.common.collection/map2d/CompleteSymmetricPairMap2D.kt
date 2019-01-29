@@ -1,6 +1,6 @@
-package org.mechdancer.common.map2d
+package org.mechdancer.common.collection.map2d
 
-import org.mechdancer.common.ext.then
+import org.mechdancer.common.extension.then
 
 /**
  * 完全对称表

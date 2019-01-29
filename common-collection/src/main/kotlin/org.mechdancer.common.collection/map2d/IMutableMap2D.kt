@@ -1,4 +1,4 @@
-package org.mechdancer.common.map2d
+package org.mechdancer.common.collection.map2d
 
 /**
  * 可变二维映射

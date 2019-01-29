@@ -1,6 +1,6 @@
-package org.mechdancer.common.map2d
+package org.mechdancer.common.collection.map2d
 
-import org.mechdancer.common.ext.then
+import org.mechdancer.common.extension.then
 
 /** 可变二维映射 */
 class MutablePairMap2D<T, U, V>(map: Map<Pair<T, U>, V> = mapOf()) :

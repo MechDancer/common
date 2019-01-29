@@ -1,4 +1,4 @@
-package org.mechdancer.common.map2d
+package org.mechdancer.common.collection.map2d
 
 /** 自填充二维映射 */
 class CompletePairMap2D<T, U, V>(map: (T, U) -> V) :

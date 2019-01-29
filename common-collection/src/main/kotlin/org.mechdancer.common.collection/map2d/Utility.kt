@@ -1,4 +1,4 @@
-package org.mechdancer.common.map2d
+package org.mechdancer.common.collection.map2d
 
 /** 求两离散集合的笛卡尔积 */
 infix fun <A, B> Set<A>.descartes(other: Set<B>) =

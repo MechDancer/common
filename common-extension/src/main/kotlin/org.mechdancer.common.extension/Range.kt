@@ -1,4 +1,4 @@
-package org.mechdancer.common.ext
+package org.mechdancer.common.extension
 
 import kotlin.math.max
 import kotlin.math.min
