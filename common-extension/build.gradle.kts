@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 version = "v0.1.0"
 
 dependencies {
@@ -8,4 +10,9 @@ dependencies {
 task<Jar>("sourcesJar") {
     classifier = "sources"
     from(sourceSets["main"].allSource)
+}
+
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
 }
