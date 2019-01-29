@@ -1,4 +1,4 @@
-package org.mechdancer.common.bs
+package org.mechdancer.common.collection.bs
 
 class BSNode<T : Comparable<T>> {
 

@@ -4,7 +4,7 @@ apply {
     plugin("com.novoda.bintray-release")
 }
 
-val slf4jVersion = "1.8.0-beta-2"
+val slf4jVersion = "1.8.0-beta2"
 val log4jVersion = "1.2.17"
 
 dependencies {

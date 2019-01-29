@@ -1,4 +1,4 @@
-package org.mechdancer.common.trie
+package org.mechdancer.common.collection.trie
 
 /**
  * 字典树

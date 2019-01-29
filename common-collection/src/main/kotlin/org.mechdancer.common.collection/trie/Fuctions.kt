@@ -1,17 +1,17 @@
-package org.mechdancer.common.trie
+package org.mechdancer.common.collection.trie
 
 /**
  * 获取该节点下的值为 [value] 的子节点
  */
 operator fun TrieNode.get(value: Char) =
-        if (this.value == value) this
-        else child.find { it.value == value }
+    if (this.value == value) this
+    else child.find { it.value == value }
 
 /**
  * 添加一个子节点
  */
 fun TrieNode.addChild(trieNode: TrieNode) =
-        child.add(trieNode)
+    child.add(trieNode)
 
 /**
  * 如果包含值为 [value] 的子节点，返回 `true`
@@ -37,15 +37,15 @@ fun TrieNode.treeView(indent: Int = 0): String {
     builder.append("$this\n")
     child.dropLast(1).forEach {
         builder
-                .append(" |".repeat(indent))
-                .append(" ├")
-                .append(it.treeView(indent + 1))
+            .append(" |".repeat(indent))
+            .append(" ├")
+            .append(it.treeView(indent + 1))
     }
     child.takeLast(1).forEach {
         builder
-                .append(" ".repeat(indent))
-                .append(" └")
-                .append(it.treeView(indent + 1))
+            .append(" ".repeat(indent))
+            .append(" └")
+            .append(it.treeView(indent + 1))
     }
     return builder.toString()
 

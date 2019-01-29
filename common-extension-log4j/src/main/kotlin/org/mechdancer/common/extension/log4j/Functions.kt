@@ -19,7 +19,8 @@ fun Logger.toFile(
     layout: Layout = DefaultLayout,
     period: Int = 0x100000
 ) = underlying.addAppender(
-    FileAppender(layout, "$currentLogPath\\$name", false, true, period))
+    FileAppender(layout, "$currentLogPath\\$name", false, true, period)
+)
 
 /** 读取/设置日志级别 */
 var Logger.level
