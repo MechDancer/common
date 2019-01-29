@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicReference
 
 /**
  * 计算一次
+ * @param strictOnce 严格一次。若为真，即使第一次计算失败产生异常也不再计算
+ * @param action     计算方法
  */
 class RunOnce<T, R>(
     private val strictOnce: Boolean = false,
