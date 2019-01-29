@@ -13,6 +13,12 @@ class OptionalTest {
         val t0 = TEST_VALUE.check { it == 12345 }
         val t1 = TEST_VALUE.check { it == 23456 }
 
+        Assert.assertTrue(t0.existent)
+        Assert.assertFalse(t0.nonexistent)
+
+        Assert.assertFalse(t1.existent)
+        Assert.assertTrue(t1.nonexistent)
+
         t0.then { }.otherwise { Assert.fail() }
         t1.then { Assert.fail() }.otherwise { }
 
