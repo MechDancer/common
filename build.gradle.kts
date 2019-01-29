@@ -1,5 +1,4 @@
 import org.jetbrains.dokka.gradle.DokkaTask
-import com.novoda.gradle.release.PublishExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
@@ -7,63 +6,65 @@ buildscript {
         mavenCentral()
         jcenter()
     }
+
     dependencies {
-        classpath("org.jetbrains.dokka:dokka-gradle-plugin")
+        classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.9.17")
         classpath("com.novoda:bintray-release:+")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20")
     }
 }
 
-plugins {
-    kotlin("jvm") version "1.3.11"
-    id("org.jetbrains.dokka") version "0.9.16"
-}
+version = "v0.1.0"
 
-apply {
-    plugin("com.novoda.bintray-release")
-}
-
-
-group = "org.mechdancer"
-version = "0.1.0"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile(kotlin("stdlib-jdk8"))
-    compile(kotlin("reflect"))
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
-
-task<Jar>("sourcesJar") {
-    classifier = "sources"
-    from(sourceSets["main"].allSource)
-}
-
-task<Jar>("javadocJar") {
+task<Delete>("clean") {
     group = "build"
-    classifier = "javadoc"
-    from("$buildDir/javadoc")
+    delete(rootProject.buildDir)
 }
 
-tasks.withType<DokkaTask> {
-    outputFormat = "javadoc"
-    outputDirectory = "$buildDir/javadoc"
-}
+subprojects {
+    group = "org.mechdancer"
 
-tasks["javadoc"].dependsOn("dokka")
-tasks["jar"].dependsOn("sourcesJar")
-tasks["jar"].dependsOn("javadocJar")
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
 
-configure<PublishExtension> {
-    userOrg = "mechdancer"
-    groupId = "org.mechdancer"
-    artifactId = "common"
-    publishVersion = version.toString()
-    desc = "common util"
-    website = "https://github.com/MechDancer/common"
+    apply {
+        plugin("org.jetbrains.dokka")
+        plugin("kotlin")
+        plugin("java")
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+
+    tasks.withType<JavaCompile> {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
+
+    task<Jar>("javadocJar") {
+        group = "build"
+        classifier = "javadoc"
+        from("$buildDir/javadoc")
+    }
+
+    task<Copy>("copyArtifacts") {
+        group = "build"
+        from("$buildDir/libs")
+        into("${rootProject.buildDir}/libs")
+    }
+
+    tasks.withType<DokkaTask> {
+        outputFormat = "javadoc"
+        outputDirectory = "$buildDir/javadoc"
+    }
+
+    tasks["javadoc"].dependsOn("dokka")
+    tasks["jar"].dependsOn("sourcesJar")
+    tasks["jar"].dependsOn("javadocJar")
+    tasks["jar"].finalizedBy("copyArtifacts")
 }
