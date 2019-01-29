@@ -1,4 +1,8 @@
-version = "v0.1.0"
+import com.novoda.gradle.release.PublishExtension
+
+apply {
+    plugin("com.novoda.bintray-release")
+}
 
 dependencies {
     implementation(kotlin("stdlib"))
@@ -9,4 +13,16 @@ dependencies {
 task<Jar>("sourcesJar") {
     classifier = "sources"
     from(sourceSets["main"].allSource)
+}
+
+configure<PublishExtension> {
+    userOrg = "mechdancer"
+    groupId = "org.mechdancer"
+    artifactId = "common-collection"
+    publishVersion = version.toString()
+    desc = "common collections"
+    website = "https://github.com/MechDancer/common/common-collection"
+    issueTracker = "https://github.com/MechDancer/common"
+    repository = "https://github.com/MechDancer/common.git"
+    setLicences("WTFPL")
 }

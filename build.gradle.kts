@@ -23,6 +23,7 @@ task<Delete>("clean") {
 
 subprojects {
     group = "org.mechdancer"
+    version = rootProject.version
 
     repositories {
         mavenCentral()

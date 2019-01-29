@@ -1,39 +1,65 @@
 package org.mechdancer.common.extension
 
 /**
- * 任意的
- *
- * 表示一个值可能存在也可能不存在
- * 作为值的内联类存在，通过一系列函数安全地访问其值
+ * A discriminated union that encapsulates a value of type [T]
+ * or void represented by `Void`.
  */
-@Suppress("NON_PUBLIC_PRIMARY_CONSTRUCTOR_OF_INLINE_CLASS")
-@SinceKotlin("1.3")
+@Suppress("NON_PUBLIC_PRIMARY_CONSTRUCTOR_OF_INLINE_CLASS", "UNCHECKED_CAST")
 inline class Optional<out T>
 @PublishedApi internal constructor(@PublishedApi internal val data: Any?) {
+
     @PublishedApi
-    internal object Otherwise
+    internal object Void
 
-    /** 若值存在则... */
-    inline fun then(block: (T) -> Any?) =
-        also { if (data !is Otherwise) block(data as T) }
+    /**
+     * Returns `true` if this instance has a value.
+     * In this case [nonexistent] returns `false`.
+     */
+    val existent get() = data !is Void
 
-    /** 若值不存在则... */
-    inline fun otherwise(block: () -> Any?) =
-        also { if (data is Otherwise) block() }
+    /**
+     * Returns `true` if this instance has no value.
+     * In this case [existent] returns `false`.
+     */
+    val nonexistent get() = data is Void
 
-    /** 尝试获取值 */
+    /**
+     * Performs the given [action] on encapsulated value if this instance [exist].
+     * Returns the original `Optional` unchanged.
+     */
+    inline fun then(action: (T) -> Any?) =
+        also { if (data !is Void) action(data as T) }
+
+    /**
+     * Performs the given [action] on encapsulated exception if this instance [nonexistent].
+     * Returns the original `Optional` unchanged.
+     */
+    inline fun otherwise(action: () -> Any?) =
+        also { if (data is Void) action() }
+
+    /**
+     * Returns the encapsulated value if this instance [existent]
+     * or `null` if it is [nonexistent].
+     */
     fun getOrNull(): T? =
-        if (data !is Otherwise) data as T else null
+        if (data !is Void) data as T else null
 
-    /** 尝试获取值，不存在则用[else]替换 */
-    inline fun <reified U, T : U> getOrElse(`else`: U): U =
-        (getOrNull() ?: `else`) as U
+    /**
+     * Returns the encapsulated value if this instance [existent]
+     * or [otherwise] if it is [nonexistent].
+     */
+    inline fun <reified U, T : U> getOrElse(otherwise: U): U =
+        (getOrNull() ?: otherwise) as U
 
     companion object {
-        /** 直接构造一个不存在的值 */
-        val otherwise = Optional<Any?>(Otherwise)
+        /**
+         * Returns a encapsulated `Void`.
+         */
+        val otherwise = Optional<Any?>(Void)
 
-        /** 直接构造一个具有特定类型的不存在的值 */
-        fun <T> otherwise() = Optional<T>(Otherwise)
+        /**
+         * Returns a encapsulated `Void` with specific type [T].
+         */
+        fun <T> otherwise() = Optional<T>(Void)
     }
 }
