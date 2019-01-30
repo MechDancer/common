@@ -13,6 +13,11 @@ class RestartableTimer(
     private val job = AtomicReference<Job?>(null)
 
     /**
+     * 判断是否正在运行
+     */
+    val running get() = job.get()?.isCancelled == false
+
+    /**
      * 立即调度一次 [block]，并按照新的 [period] 定时反复调度 [block]
      */
     operator fun invoke(
