@@ -10,17 +10,14 @@ dependencies {
 }
 
 task<Jar>("sourcesJar") {
-    group = "build"
     classifier = "sources"
+    group = "build"
 
     rootProject.subprojects
         .filter { it !== project }
         .flatMap { it.sourceSets["main"].allSource.srcDirs }
         .filter { it.exists() && it.isDirectory }
-//        .reduce { acc: FileTree, fileTree: FileTree -> acc + fileTree }
-        .forEach {
-            from(it)
-        }
+        .forEach { from(it) }
 }
 
 

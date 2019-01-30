@@ -13,6 +13,8 @@ dependencies {
 
 task<Jar>("sourcesJar") {
     classifier = "sources"
+    group = "build"
+
     from(sourceSets["main"].allSource)
 }
 

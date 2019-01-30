@@ -31,9 +31,9 @@ class RunOnce<T, R>(
                 // 1. 之前的计算完成
                 // 2. 之前的计算失败，且不允许重新计算
                 last?.takeIf { it.existent || strictOnce }
-                ?: runCatching { action(p).toOptional() }
-                    // 无论这一次计算成功还是失败，原子变量不再为空
-                    .getOrElse { otherwise() }
+                    ?: runCatching { action(p).toOptional() }
+                        // 无论这一次计算成功还是失败，原子变量不再为空
+                        .getOrElse { otherwise() }
             }
             ?.getOrNull()
 }

@@ -22,9 +22,10 @@ dependencies {
 
 task<Jar>("sourcesJar") {
     classifier = "sources"
+    group = "build"
+
     from(sourceSets["main"].allSource)
 }
-
 configure<PublishExtension> {
     userOrg = "mechdancer"
     groupId = "org.mechdancer"

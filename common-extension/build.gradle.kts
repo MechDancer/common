@@ -7,12 +7,14 @@ apply {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    
+
     testImplementation("junit", "junit", "4.12")
 }
 
 task<Jar>("sourcesJar") {
     classifier = "sources"
+    group = "build"
+
     from(sourceSets["main"].allSource)
 }
 
