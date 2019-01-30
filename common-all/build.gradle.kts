@@ -10,35 +10,26 @@ dependencies {
 }
 
 task<Jar>("sourcesJar") {
+    group = "build"
     classifier = "sources"
-    from(sourceSets["main"].allSource)
+
+    rootProject.subprojects
+        .filter { it !== project }
+        .flatMap { it.sourceSets["main"].allSource.srcDirs }
+        .filter { it.exists() && it.isDirectory }
+//        .reduce { acc: FileTree, fileTree: FileTree -> acc + fileTree }
+        .forEach {
+            from(it)
+        }
 }
 
-tasks.withType<Jar> {
+
+tasks.getByName<Jar>("jar") {
     for (project in rootProject.subprojects) {
         from("${project.buildDir}/classes/kotlin/main")
     }
 }
 
-//task<Jar>("fatJar") {
-//
-//    classifier = "fatJar"
-//    group = "build"
-//
-//    for (project in rootProject.subprojects) {
-//        from("${project.buildDir}/classes/kotlin/main")
-//        from(project.configurations.forEach {
-//            try {
-//                it.map {
-//                    println(it)
-//                    if (it.isDirectory) it else zipTree(it)
-//                }
-//            }catch (e:Exception){
-//                e.printStackTrace()
-//            }
-//        })
-//    }
-//}
 
 configure<PublishExtension> {
     userOrg = "mechdancer"
