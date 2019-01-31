@@ -32,8 +32,8 @@ configure<PublishExtension> {
     artifactId = project.name
     publishVersion = version.toString()
     desc = "common extensions for log4j"
-    website = extra["publishWebsite"].toString() + artifactId
-    issueTracker = extra["publishIssueTracker"].toString()
-    repository = extra["publishRepository"].toString()
+    website = "https://github.com/MechDancer/common/$artifactId"
+    issueTracker = "https://github.com/MechDancer/common/issues"
+    repository = "https://github.com/MechDancer/common.git"
     setLicences("WTFPL")
 }

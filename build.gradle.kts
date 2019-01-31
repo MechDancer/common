@@ -4,16 +4,6 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
 
-    var kotlinVersion: String by extra
-    var publishWebsite: String by extra
-
-    kotlinVersion = "1.3.20"
-    publishWebsite = "https://github.com/MechDancer/common/"
-
-    extra.apply {
-        this["publishIssueTracker"] = "$publishWebsite/issues"
-        this["publishRepository"] = "$publishWebsite.git"
-    }
     repositories {
         mavenCentral()
         jcenter()
@@ -22,7 +12,7 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.9.17")
         classpath("com.novoda:bintray-release:+")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20")
     }
 }
 
@@ -36,11 +26,6 @@ task<Delete>("clean") {
 subprojects {
     group = "org.mechdancer"
     version = rootProject.version
-
-    rootProject.extra.properties.forEach {
-        if (it.key.contains("publish"))
-            extra[it.key] = it.value
-    }
 
     repositories {
         mavenCentral()

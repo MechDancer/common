@@ -51,9 +51,9 @@ configure<PublishExtension> {
     groupId = "org.mechdancer"
     artifactId = project.name
     publishVersion = version.toString()
-    desc = "common utilities"
-    website = extra["publishWebsite"].toString() + artifactId
-    issueTracker = extra["publishIssueTracker"].toString()
-    repository = extra["publishRepository"].toString()
+    desc = "mechdancer common all in one"
+    website = "https://github.com/MechDancer/common/$artifactId"
+    issueTracker = "https://github.com/MechDancer/common/issues"
+    repository = "https://github.com/MechDancer/common.git"
     setLicences("WTFPL")
 }
