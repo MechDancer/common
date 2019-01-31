@@ -1,206 +1,38 @@
 ---
 title: Optional - 
-layout: api
 ---
 
-<div class='api-docs-breadcrumbs'><a href="../index.html">org.mechdancer.common.extension</a> / <a href="./index.html">Optional</a></div>
+[org.mechdancer.common.extension](../index.html) / [Optional](./index.html)
 
 # Optional
 
-<div class="signature"><code><span class="keyword">inline</span> <span class="keyword">class </span><span class="identifier">Optional</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span></code></div>
+`inline class Optional<out T>`
 
-A discriminated union that encapsulates a value of type <a href="index.html#T">T</a>
-or void represented by <code>Void</code>.
+A discriminated union that encapsulates a value of type [T](index.html#T)
+or void represented by `Void`.
 
 ### Properties
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
-
-<a href="existent.html">existent</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">val </span><span class="identifier">existent</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></div>
-
-Returns <code>true</code> if this instance has a value.
-In this case <a href="nonexistent.html">nonexistent</a> returns <code>false</code>.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="nonexistent.html">nonexistent</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">val </span><span class="identifier">nonexistent</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></div>
-
-Returns <code>true</code> if this instance has no value.
-In this case <a href="existent.html">existent</a> returns <code>false</code>.
-
-
-</td>
-</tr>
-</tbody>
-</table>
+| [existent](existent.html) | `val existent: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Returns `true` if this instance has a value. In this case [nonexistent](nonexistent.html) returns `false`. |
+| [nonexistent](nonexistent.html) | `val nonexistent: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>Returns `true` if this instance has no value. In this case [existent](existent.html) returns `false`. |
 
 ### Functions
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
-
-<a href="get-or-else.html">getOrElse</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">U</span><span class="symbol">, </span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="get-or-else.html#U"><span class="identifier">U</span></a><span class="symbol">&gt;</span> <span class="identifier">getOrElse</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.extension.Optional$getOrElse(org.mechdancer.common.extension.Optional.getOrElse.U)/otherwise">otherwise</span><span class="symbol">:</span>&nbsp;<a href="get-or-else.html#U"><span class="identifier">U</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="get-or-else.html#U"><span class="identifier">U</span></a></code></div>
-
-Returns the encapsulated value if this instance <a href="existent.html">existent</a>
-or <a href="get-or-else.html#org.mechdancer.common.extension.Optional$getOrElse(org.mechdancer.common.extension.Optional.getOrElse.U)/otherwise">otherwise</a> if it is <a href="nonexistent.html">nonexistent</a>.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="get-or-null.html">getOrNull</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="identifier">getOrNull</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html#T"><span class="identifier">T</span></a><span class="symbol">?</span></code></div>
-
-Returns the encapsulated value if this instance <a href="existent.html">existent</a>
-or <code>null</code> if it is <a href="nonexistent.html">nonexistent</a>.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="otherwise.html">otherwise</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="identifier">otherwise</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.extension.Optional$otherwise(kotlin.Function0((kotlin.Any)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Optional</span></a><span class="symbol">&lt;</span><a href="index.html#T"><span class="identifier">T</span></a><span class="symbol">&gt;</span></code></div>
-
-Performs the given <a href="otherwise.html#org.mechdancer.common.extension.Optional$otherwise(kotlin.Function0((kotlin.Any)))/action">action</a> on encapsulated exception if this instance <a href="nonexistent.html">nonexistent</a>.
-Returns the original <code>Optional</code> unchanged.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="then.html">then</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="identifier">then</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.extension.Optional$then(kotlin.Function1((org.mechdancer.common.extension.Optional.T, kotlin.Any)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><a href="index.html#T"><span class="identifier">T</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Optional</span></a><span class="symbol">&lt;</span><a href="index.html#T"><span class="identifier">T</span></a><span class="symbol">&gt;</span></code></div>
-
-Performs the given <a href="then.html#org.mechdancer.common.extension.Optional$then(kotlin.Function1((org.mechdancer.common.extension.Optional.T, kotlin.Any)))/action">action</a> on encapsulated value if this instance <a href="#">exist</a>.
-Returns the original <code>Optional</code> unchanged.
-
-
-</td>
-</tr>
-</tbody>
-</table>
+| [getOrElse](get-or-else.html) | `fun <U, T : `[`U`](get-or-else.html#U)`> getOrElse(otherwise: `[`U`](get-or-else.html#U)`): `[`U`](get-or-else.html#U)<br>Returns the encapsulated value if this instance [existent](existent.html) or [otherwise](get-or-else.html#org.mechdancer.common.extension.Optional$getOrElse(org.mechdancer.common.extension.Optional.getOrElse.U)/otherwise) if it is [nonexistent](nonexistent.html). |
+| [getOrNull](get-or-null.html) | `fun getOrNull(): `[`T`](index.html#T)`?`<br>Returns the encapsulated value if this instance [existent](existent.html) or `null` if it is [nonexistent](nonexistent.html). |
+| [otherwise](otherwise.html) | `fun otherwise(action: () -> `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?): `[`Optional`](./index.html)`<`[`T`](index.html#T)`>`<br>Performs the given [action](otherwise.html#org.mechdancer.common.extension.Optional$otherwise(kotlin.Function0((kotlin.Any)))/action) on encapsulated exception if this instance [nonexistent](nonexistent.html). Returns the original `Optional` unchanged. |
+| [then](then.html) | `fun then(action: (`[`T`](index.html#T)`) -> `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?): `[`Optional`](./index.html)`<`[`T`](index.html#T)`>`<br>Performs the given [action](then.html#org.mechdancer.common.extension.Optional$then(kotlin.Function1((org.mechdancer.common.extension.Optional.T, kotlin.Any)))/action) on encapsulated value if this instance [exist](#). Returns the original `Optional` unchanged. |
 
 ### Companion Object Properties
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
-
-<a href="otherwise.html">otherwise</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">val </span><span class="identifier">otherwise</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Optional</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></code></div>
-
-Returns a encapsulated <code>Void</code>.
-
-
-</td>
-</tr>
-</tbody>
-</table>
+| [otherwise](otherwise.html) | `val otherwise: `[`Optional`](./index.html)`<`[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?>`<br>Returns a encapsulated `Void`. |
 
 ### Companion Object Functions
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
-
-<a href="otherwise.html">otherwise</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <span class="identifier">otherwise</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">Optional</span></a><span class="symbol">&lt;</span><a href="otherwise.html#T"><span class="identifier">T</span></a><span class="symbol">&gt;</span></code></div>
-
-Returns a encapsulated <code>Void</code> with specific type <a href="otherwise.html#T">T</a>.
-
-
-</td>
-</tr>
-</tbody>
-</table>
+| [otherwise](otherwise.html) | `fun <T> otherwise(): `[`Optional`](./index.html)`<`[`T`](otherwise.html#T)`>`<br>Returns a encapsulated `Void` with specific type [T](otherwise.html#T). |
 
 ### Extension Functions
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
+| [cast](../kotlin.-any/cast.html) | `fun <T> `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?.cast(): `[`T`](../kotlin.-any/cast.html#T)<br>Casts [this](../kotlin.-any/cast/-this-.html) to the class represented by type parameter [T](../kotlin.-any/cast.html#T). Throws an exception if the value is `null` or if it is not an instance of [T](../kotlin.-any/cast.html#T). |
+| [safeCast](../kotlin.-any/safe-cast.html) | `fun <T> `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?.safeCast(): `[`T`](../kotlin.-any/safe-cast.html#T)`?`<br>Casts [this](../kotlin.-any/safe-cast/-this-.html) to the class represented by type parameter [T](../kotlin.-any/safe-cast.html#T). Returns `null` if the value is `null` or if it is not an instance of [T](../kotlin.-any/safe-cast.html#T). |
 
-<a href="../kotlin.-any/cast.html">cast</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">.</span><span class="identifier">cast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../kotlin.-any/cast.html#T"><span class="identifier">T</span></a></code></div>
-
-Casts <a href="../kotlin.-any/cast/-this-.html">this</a> to the class represented by type parameter <a href="../kotlin.-any/cast.html#T">T</a>.
-Throws an exception if the value is <code>null</code> or if it is not an instance of <a href="../kotlin.-any/cast.html#T">T</a>.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../kotlin.-any/safe-cast.html">safeCast</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">.</span><span class="identifier">safeCast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../kotlin.-any/safe-cast.html#T"><span class="identifier">T</span></a><span class="symbol">?</span></code></div>
-
-Casts <a href="../kotlin.-any/safe-cast/-this-.html">this</a> to the class represented by type parameter <a href="../kotlin.-any/safe-cast.html#T">T</a>.
-Returns <code>null</code> if the value is <code>null</code> or if it is not an instance of <a href="../kotlin.-any/safe-cast.html#T">T</a>.
-
-
-</td>
-</tr>
-</tbody>
-</table>

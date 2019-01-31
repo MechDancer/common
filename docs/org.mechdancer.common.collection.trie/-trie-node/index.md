@@ -1,162 +1,28 @@
 ---
 title: TrieNode - 
-layout: api
 ---
 
-<div class='api-docs-breadcrumbs'><a href="../index.html">org.mechdancer.common.collection.trie</a> / <a href="./index.html">TrieNode</a></div>
+[org.mechdancer.common.collection.trie](../index.html) / [TrieNode](./index.html)
 
 # TrieNode
 
-<div class="signature"><code><span class="keyword">class </span><span class="identifier">TrieNode</span></code></div>
+`class TrieNode`
 
 ### Constructors
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
-
-<a href="-init-.html">&lt;init&gt;</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="identifier">TrieNode</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.collection.trie.TrieNode$<init>(kotlin.Char)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html"><span class="identifier">Char</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span></code></div>
-
-</td>
-</tr>
-</tbody>
-</table>
+| [&lt;init&gt;](-init-.html) | `TrieNode(value: `[`Char`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html)`? = null)` |
 
 ### Functions
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
-
-<a href="to-string.html">toString</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></div>
-
-</td>
-</tr>
-</tbody>
-</table>
+| [toString](to-string.html) | `fun toString(): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |
 
 ### Extension Functions
 
-<table class="api-docs-table">
-<tbody>
-<tr>
-<td markdown="1">
+| [addChild](../add-child.html) | `fun `[`TrieNode`](./index.html)`.addChild(trieNode: `[`TrieNode`](./index.html)`): `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>添加一个子节点 |
+| [cast](../../org.mechdancer.common.extension/kotlin.-any/cast.html) | `fun <T> `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?.cast(): `[`T`](../../org.mechdancer.common.extension/kotlin.-any/cast.html#T)<br>Casts [this](../../org.mechdancer.common.extension/kotlin.-any/cast/-this-.html) to the class represented by type parameter [T](../../org.mechdancer.common.extension/kotlin.-any/cast.html#T). Throws an exception if the value is `null` or if it is not an instance of [T](../../org.mechdancer.common.extension/kotlin.-any/cast.html#T). |
+| [contains](../contains.html) | `operator fun `[`TrieNode`](./index.html)`.contains(value: `[`Char`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html)`): `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>如果包含值为 [value](../contains.html#org.mechdancer.common.collection.trie$contains(org.mechdancer.common.collection.trie.TrieNode, kotlin.Char)/value) 的子节点，返回 `true` |
+| [get](../get.html) | `operator fun `[`TrieNode`](./index.html)`.get(value: `[`Char`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html)`): `[`TrieNode`](./index.html)`?`<br>获取该节点下的值为 [value](../get.html#org.mechdancer.common.collection.trie$get(org.mechdancer.common.collection.trie.TrieNode, kotlin.Char)/value) 的子节点 |
+| [isEnd](../is-end.html) | `fun `[`TrieNode`](./index.html)`.isEnd(): `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)<br>是否为叶子节点 |
+| [safeCast](../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html) | `fun <T> `[`Any`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html)`?.safeCast(): `[`T`](../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html#T)`?`<br>Casts [this](../../org.mechdancer.common.extension/kotlin.-any/safe-cast/-this-.html) to the class represented by type parameter [T](../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html#T). Returns `null` if the value is `null` or if it is not an instance of [T](../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html#T). |
+| [treeView](../tree-view.html) | `fun `[`TrieNode`](./index.html)`.treeView(indent: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = 0): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)<br>画成树状图 |
 
-<a href="../add-child.html">addChild</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">.</span><span class="identifier">addChild</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.collection.trie$addChild(org.mechdancer.common.collection.trie.TrieNode, org.mechdancer.common.collection.trie.TrieNode)/trieNode">trieNode</span><span class="symbol">:</span>&nbsp;<a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></div>
-
-添加一个子节点
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../../org.mechdancer.common.extension/kotlin.-any/cast.html">cast</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">.</span><span class="identifier">cast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.mechdancer.common.extension/kotlin.-any/cast.html#T"><span class="identifier">T</span></a></code></div>
-
-Casts <a href="../../org.mechdancer.common.extension/kotlin.-any/cast/-this-.html">this</a> to the class represented by type parameter <a href="../../org.mechdancer.common.extension/kotlin.-any/cast.html#T">T</a>.
-Throws an exception if the value is <code>null</code> or if it is not an instance of <a href="../../org.mechdancer.common.extension/kotlin.-any/cast.html#T">T</a>.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../contains.html">contains</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">.</span><span class="identifier">contains</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.collection.trie$contains(org.mechdancer.common.collection.trie.TrieNode, kotlin.Char)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html"><span class="identifier">Char</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></div>
-
-如果包含值为 <a href="../contains.html#org.mechdancer.common.collection.trie$contains(org.mechdancer.common.collection.trie.TrieNode, kotlin.Char)/value">value</a> 的子节点，返回 <code>true</code>
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../get.html">get</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">operator</span> <span class="keyword">fun </span><a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">.</span><span class="identifier">get</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.collection.trie$get(org.mechdancer.common.collection.trie.TrieNode, kotlin.Char)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html"><span class="identifier">Char</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">?</span></code></div>
-
-获取该节点下的值为 <a href="../get.html#org.mechdancer.common.collection.trie$get(org.mechdancer.common.collection.trie.TrieNode, kotlin.Char)/value">value</a> 的子节点
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../is-end.html">isEnd</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">.</span><span class="identifier">isEnd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></div>
-
-是否为叶子节点
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html">safeCast</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span> <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">.</span><span class="identifier">safeCast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html#T"><span class="identifier">T</span></a><span class="symbol">?</span></code></div>
-
-Casts <a href="../../org.mechdancer.common.extension/kotlin.-any/safe-cast/-this-.html">this</a> to the class represented by type parameter <a href="../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html#T">T</a>.
-Returns <code>null</code> if the value is <code>null</code> or if it is not an instance of <a href="../../org.mechdancer.common.extension/kotlin.-any/safe-cast.html#T">T</a>.
-
-
-</td>
-</tr>
-<tr>
-<td markdown="1">
-
-<a href="../tree-view.html">treeView</a>
-
-
-</td>
-<td markdown="1">
-<div class="signature"><code><span class="keyword">fun </span><a href="./index.html"><span class="identifier">TrieNode</span></a><span class="symbol">.</span><span class="identifier">treeView</span><span class="symbol">(</span><span class="parameterName" id="org.mechdancer.common.collection.trie$treeView(org.mechdancer.common.collection.trie.TrieNode, kotlin.Int)/indent">indent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;0<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></div>
-
-画成树状图
-
-
-</td>
-</tr>
-</tbody>
-</table>

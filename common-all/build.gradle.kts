@@ -37,7 +37,7 @@ tasks.withType<DokkaTask> {
 }
 
 task<DokkaTask>("website") {
-    outputFormat = "kotlin-website"
+    outputFormat = "jekyll"
     sourceDirs =
         rootProject.subprojects
             .filter { it !== project }

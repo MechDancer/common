@@ -1,13 +1,12 @@
 ---
 title: RunOnce.value - 
-layout: api
 ---
 
-<div class='api-docs-breadcrumbs'><a href="../index.html">org.mechdancer.common.concurrent</a> / <a href="index.html">RunOnce</a> / <a href="./value.html">value</a></div>
+[org.mechdancer.common.concurrent](../index.html) / [RunOnce](index.html) / [value](./value.html)
 
 # value
 
-<div class="signature"><code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="index.html#R"><span class="identifier">R</span></a><span class="symbol">?</span></code></div>
+`val value: `[`R`](index.html#R)`?`
 
 获取计算得到的值
 

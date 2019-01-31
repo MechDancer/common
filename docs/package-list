@@ -1,4 +1,4 @@
-$dokka.format:kotlin-website
+$dokka.format:jekyll
 $dokka.linkExtension:html
 $dokka.location:org.mechdancer.common.collection.map2d$descartes(kotlin.collections.Set((org.mechdancer.common.collection.map2d.descartes.A)), kotlin.collections.Set((org.mechdancer.common.collection.map2d.descartes.B)))org.mechdancer.common.collection.map2d/kotlin.collections.-set/descartes.html
 $dokka.location:org.mechdancer.common.extension$adjust(kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)), kotlin.Double)org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/adjust.html

@@ -1,13 +1,12 @@
 ---
 title: RestartableTimer.running - 
-layout: api
 ---
 
-<div class='api-docs-breadcrumbs'><a href="../index.html">org.mechdancer.common.concurrent.coroutine</a> / <a href="index.html">RestartableTimer</a> / <a href="./running.html">running</a></div>
+[org.mechdancer.common.concurrent.coroutine](../index.html) / [RestartableTimer](index.html) / [running](./running.html)
 
 # running
 
-<div class="signature"><code><span class="keyword">val </span><span class="identifier">running</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></div>
+`val running: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)
 
 判断是否正在运行
 

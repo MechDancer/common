@@ -1,13 +1,12 @@
 ---
 title: RestartableTimer.close - 
-layout: api
 ---
 
-<div class='api-docs-breadcrumbs'><a href="../index.html">org.mechdancer.common.concurrent.coroutine</a> / <a href="index.html">RestartableTimer</a> / <a href="./close.html">close</a></div>
+[org.mechdancer.common.concurrent.coroutine](../index.html) / [RestartableTimer](index.html) / [close](./close.html)
 
 # close
 
-<div class="signature"><code><span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></div>
+`fun close(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)
 
 停止调度
 
