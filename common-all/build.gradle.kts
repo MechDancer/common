@@ -1,4 +1,5 @@
 import com.novoda.gradle.release.PublishExtension
+import org.jetbrains.dokka.gradle.DokkaTask
 
 apply {
     plugin("com.novoda.bintray-release")
@@ -25,6 +26,23 @@ tasks.getByName<Jar>("jar") {
     for (project in rootProject.subprojects) {
         from("${project.buildDir}/classes/kotlin/main")
     }
+}
+
+
+tasks.withType<DokkaTask> {
+    sourceDirs =
+        rootProject.subprojects
+            .filter { it !== project }
+            .flatMap { it.sourceSets["main"].allSource.srcDirs }
+}
+
+task<DokkaTask>("website") {
+    outputFormat = "kotlin-website"
+    sourceDirs =
+        rootProject.subprojects
+            .filter { it !== project }
+            .flatMap { it.sourceSets["main"].allSource.srcDirs }
+    outputDirectory = "$rootDir/doc"
 }
 
 

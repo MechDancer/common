@@ -1,0 +1,21 @@
+$dokka.format:kotlin-website
+$dokka.linkExtension:html
+$dokka.location:org.mechdancer.common.collection.map2d$descartes(kotlin.collections.Set((org.mechdancer.common.collection.map2d.descartes.A)), kotlin.collections.Set((org.mechdancer.common.collection.map2d.descartes.B)))org.mechdancer.common.collection.map2d/kotlin.collections.-set/descartes.html
+$dokka.location:org.mechdancer.common.extension$adjust(kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)), kotlin.Double)org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/adjust.html
+$dokka.location:org.mechdancer.common.extension$cast(kotlin.Any)org.mechdancer.common.extension/kotlin.-any/cast.html
+$dokka.location:org.mechdancer.common.extension$div(kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)), kotlin.Int)org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/div.html
+$dokka.location:org.mechdancer.common.extension$extend(kotlin.Double, kotlin.Double)org.mechdancer.common.extension/kotlin.-double/extend.html
+$dokka.location:org.mechdancer.common.extension$length#kotlin.ranges.ClosedFloatingPointRange((kotlin.Double))org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/length.html
+$dokka.location:org.mechdancer.common.extension$limit(kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)), kotlin.Double)org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/limit.html
+$dokka.location:org.mechdancer.common.extension$limit(kotlin.ranges.IntRange, kotlin.Int)org.mechdancer.common.extension/kotlin.ranges.-int-range/limit.html
+$dokka.location:org.mechdancer.common.extension$otherwise(kotlin.Boolean, kotlin.Function0((kotlin.Unit)))org.mechdancer.common.extension/kotlin.-boolean/otherwise.html
+$dokka.location:org.mechdancer.common.extension$plus(kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)), kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)))org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/plus.html
+$dokka.location:org.mechdancer.common.extension$safeCast(kotlin.Any)org.mechdancer.common.extension/kotlin.-any/safe-cast.html
+$dokka.location:org.mechdancer.common.extension$then(kotlin.Boolean, kotlin.Function0((kotlin.Unit)))org.mechdancer.common.extension/kotlin.-boolean/then.html
+$dokka.location:org.mechdancer.common.extension$times(kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)), kotlin.ranges.ClosedFloatingPointRange((kotlin.Double)))org.mechdancer.common.extension/kotlin.ranges.-closed-floating-point-range/times.html
+org.mechdancer.common.collection.map2d
+org.mechdancer.common.collection.trie
+org.mechdancer.common.concurrent
+org.mechdancer.common.concurrent.coroutine
+org.mechdancer.common.extension
+org.mechdancer.common.extension.log4j
