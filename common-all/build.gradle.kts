@@ -42,7 +42,7 @@ task<DokkaTask>("website") {
         rootProject.subprojects
             .filter { it !== project }
             .flatMap { it.sourceSets["main"].allSource.srcDirs }
-    outputDirectory = "$rootDir/doc"
+    outputDirectory = "$rootDir/docs"
 }
 
 
