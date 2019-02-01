@@ -1,12 +1,10 @@
 import org.apache.log4j.Level
-import org.mechdancer.common.extension.log4j.level
-import org.mechdancer.common.extension.log4j.logger
-import org.mechdancer.common.extension.log4j.toConsole
+import org.mechdancer.common.extension.log4j.*
 
 fun main() {
     with(logger("hello")) {
         level = Level.ALL
-        toConsole()
+        toConsole(pattern(Locate))
 
         trace("1")
         debug("2")

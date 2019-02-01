@@ -16,12 +16,12 @@ val Logger.underlying: org.apache.log4j.Logger
     get() = LogManager.getLogger(name)
 
 /** 设置日志输出到控制台 */
-fun Logger.toConsole(layout: Layout = DefaultLayout) =
+fun Logger.toConsole(layout: Layout = pattern()) =
     underlying.addAppender(ConsoleAppender(layout))
 
 /** 设置日志输出到文件 */
 fun Logger.toFile(
-    layout: Layout = DefaultLayout,
+    layout: Layout = pattern(),
     period: Int = 0x100000
 ) = underlying.addAppender(
     FileAppender(layout, "$currentLogPath\\$name", false, true, period)
