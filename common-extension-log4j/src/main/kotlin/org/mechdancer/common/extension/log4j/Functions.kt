@@ -5,6 +5,11 @@ import org.apache.log4j.FileAppender
 import org.apache.log4j.Layout
 import org.apache.log4j.LogManager
 import org.slf4j.Logger
+import org.slf4j.LoggerFactory
+
+/** 构造日志器 */
+fun logger(name: String): Logger =
+    LoggerFactory.getLogger(name)
 
 /** 在log4j中获取日志器 */
 val Logger.underlying: org.apache.log4j.Logger
