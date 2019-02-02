@@ -28,7 +28,7 @@ class CompleteSymmetricPairMap2D<T, V>(map: (T, T) -> V) :
         ICompleteSymmetricMap2D<T, V> {
         override val keys0 = mutableSetOf<T>()
         override val keys1 get() = keys0
-        override fun values0(t: T) = keys0.associate { it to this[t, it] }
+        override fun values0(t: T) = keys0.associateWith { this[t, it] }
         override fun values1(u: T) = values0(u)
 
         override fun get(t: T, u: T) = this[Key(t, u)]

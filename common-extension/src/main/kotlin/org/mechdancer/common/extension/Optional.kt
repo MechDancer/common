@@ -39,17 +39,27 @@ inline class Optional<out T>
 
     /**
      * Returns the encapsulated value if this instance [existent]
+     * or throw an [UnsupportedOperationException] if it is [nonexistent].
+     */
+    fun get(): T =
+        if (data !is Void) data as T
+        else throw UnsupportedOperationException("void")
+
+    /**
+     * Returns the encapsulated value if this instance [existent]
      * or `null` if it is [nonexistent].
      */
     fun getOrNull(): T? =
-        if (data !is Void) data as T else null
+        if (data !is Void) data as T
+        else null
 
     /**
      * Returns the encapsulated value if this instance [existent]
      * or [otherwise] if it is [nonexistent].
      */
     inline fun <reified U, T : U> getOrElse(otherwise: U): U =
-        (getOrNull() ?: otherwise) as U
+        if (data !is Void) data as T
+        else otherwise
 
     companion object {
         /**

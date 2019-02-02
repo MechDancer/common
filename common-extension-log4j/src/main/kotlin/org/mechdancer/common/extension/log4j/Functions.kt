@@ -1,30 +1,21 @@
 package org.mechdancer.common.extension.log4j
 
-import org.apache.log4j.ConsoleAppender
-import org.apache.log4j.FileAppender
-import org.apache.log4j.Layout
-import org.apache.log4j.LogManager
-import org.slf4j.Logger
+/** 对标准格式附加信息并输出到控制台 */
+fun LoggerDsl.console(vararg info: String) =
+    console(pattern(*info))
 
-/** 在log4j中获取日志器 */
-val Logger.underlying: org.apache.log4j.Logger
-    get() = LogManager.getLogger(name)
+/** 对标准格式附加信息并输出到文件 */
+fun LoggerDsl.file(period: Int = 0x100000, vararg info: String) =
+    file(period, pattern(*info))
 
-/** 设置日志输出到控制台 */
-fun Logger.toConsole(layout: Layout = DefaultLayout) =
-    underlying.addAppender(ConsoleAppender(layout))
+/** 构造日志器 */
+fun logger(name: String, block: LoggerDsl.() -> Unit) =
+    LoggerDsl()
+        .apply(block)
+        .build(name)
 
-/** 设置日志输出到文件 */
-fun Logger.toFile(
-    layout: Layout = DefaultLayout,
-    period: Int = 0x100000
-) = underlying.addAppender(
-    FileAppender(layout, "$currentLogPath\\$name", false, true, period)
-)
-
-/** 读取/设置日志级别 */
-var Logger.level
-    get() = underlying.level!!
-    set(value) {
-        underlying.level = value
-    }
+/** 构造日志修饰器 */
+fun loggerWapper(block: LoggerDsl.() -> Unit) =
+    LoggerDsl()
+        .apply(block)
+        .wapper

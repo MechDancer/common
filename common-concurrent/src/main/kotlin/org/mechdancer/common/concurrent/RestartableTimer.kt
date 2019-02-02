@@ -39,7 +39,10 @@ class RestartableTimer(
      * 停止调度
      */
     override fun close() {
-        job.get()?.cancel()
+        job.getAndUpdate { last ->
+            last?.cancel()
+            null
+        }
     }
 }
 
