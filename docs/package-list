@@ -16,6 +16,5 @@ $dokka.location:org.mechdancer.common.extension$times(kotlin.ranges.ClosedFloati
 org.mechdancer.common.collection.map2d
 org.mechdancer.common.collection.trie
 org.mechdancer.common.concurrent
-org.mechdancer.common.concurrent.coroutine
 org.mechdancer.common.extension
 org.mechdancer.common.extension.log4j

@@ -1,4 +1,4 @@
-package org.mechdancer.common.concurrent.coroutine
+package org.mechdancer.common.concurrent
 
 import kotlinx.coroutines.*
 import java.io.Closeable
@@ -43,4 +43,11 @@ class RestartableTimer(
     }
 }
 
+/**
+ * 在协程作用域开启一个 [RestartableTimer]
+ */
+fun CoroutineScope.restartableTimer(
+    period: Long,
+    block: suspend () -> Unit
+) = RestartableTimer(this)(period, block)
 
