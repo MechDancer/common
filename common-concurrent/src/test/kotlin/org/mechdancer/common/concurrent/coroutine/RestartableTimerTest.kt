@@ -3,6 +3,7 @@ package org.mechdancer.common.concurrent.coroutine
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
+import org.mechdancer.common.concurrent.RestartableTimer
 
 class RestartableTimerTest {
     @Test
