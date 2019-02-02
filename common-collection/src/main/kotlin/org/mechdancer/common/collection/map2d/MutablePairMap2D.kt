@@ -9,8 +9,8 @@ class MutablePairMap2D<T, U, V>(map: Map<Pair<T, U>, V> = mapOf()) :
         (map: Map<Pair<T, U>, V>) :
         MutableMap<Pair<T, U>, V> by map.toMutableMap(),
         IMutableMap2D<T, U, V> {
-        override fun values0(t: T) = keys1.associate { it to this[t, it] }
-        override fun values1(u: U) = keys0.associate { it to this[it, u] }
+        override fun values0(t: T) = keys1.associateWith { this[t, it] }
+        override fun values1(u: U) = keys0.associateWith { this[it, u] }
         override val keys0 = keys.map { it.first }.toMutableSet()
         override val keys1 = keys.map { it.second }.toMutableSet()
         override fun get(t: T, u: U) = this[t to u]
