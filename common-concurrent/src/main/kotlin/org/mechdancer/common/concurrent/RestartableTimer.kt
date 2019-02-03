@@ -53,4 +53,3 @@ fun CoroutineScope.restartableTimer(
     period: Long,
     block: suspend () -> Unit
 ) = RestartableTimer(this)(period, block)
-

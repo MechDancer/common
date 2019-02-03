@@ -10,6 +10,7 @@ class LoggerDslTest {
         val logger = logger("hello") {
             level = Level.ALL
             console(Locate)
+            file()
         }
 
         with(logger) {
@@ -23,9 +24,10 @@ class LoggerDslTest {
 
     @Test
     fun test2() {
-        val wapper = loggerWapper {
+        val wapper = loggerWrapper {
             level = Level.ALL
             console(Locate)
+            file()
         }
 
         with(LoggerFactory.getLogger("hello")) {

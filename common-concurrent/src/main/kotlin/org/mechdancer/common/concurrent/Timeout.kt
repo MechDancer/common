@@ -1,28 +1,32 @@
 package org.mechdancer.common.concurrent
 
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.TimeoutCancellationException
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withTimeout
 
-fun withTimeout(timeout: Long, block: () -> Boolean): Boolean {
-    if (timeout <= 0L) throw IllegalArgumentException("Timed out immediately")
+/**
+ * 反复调用 [block]，直到返回值不为空或超时
+ */
+inline fun <T : Any> repeatWithTimeout(timeout: Long, block: () -> T?): T? {
     val start = System.currentTimeMillis()
-    var result = false
-    while (System.currentTimeMillis() - start < timeout
-        && !block().also { result = it }
-    );
-    return result
+    while (System.currentTimeMillis() - start < timeout)
+        return block() ?: continue
+    return null
 }
 
-suspend fun withTimeout(timeout: Long, block: suspend () -> Boolean): Boolean {
-    var job: Job? = null
-    kotlinx.coroutines.withTimeout(timeout) {
-        job = GlobalScope.launch(Dispatchers.Default) {
-            block()
-        }
-        job?.join()
+/**
+ * 安全的超时
+ *
+ * 不会因为在 [block] 内阻塞**线程**而失效，也不产生 [TimeoutCancellationException]，
+ * 未能计算出的值用 `null` 表示
+ */
+suspend fun <T : Any> runWithTimeout(timeout: Long, block: suspend () -> T): T? {
+    if (timeout <= 0) return null
+    val deferred = GlobalScope.async { block() }
+    return try {
+        withTimeout(timeout) { deferred.await() }
+    } catch (e: TimeoutCancellationException) {
+        null
     }
-    job!!.cancel()
-    return job!!.isCompleted
 }

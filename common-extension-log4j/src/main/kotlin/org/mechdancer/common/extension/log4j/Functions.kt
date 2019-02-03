@@ -9,13 +9,13 @@ fun LoggerDsl.file(period: Int = 0x100000, vararg info: String) =
     file(period, pattern(*info))
 
 /** 构造日志器 */
-fun logger(name: String, block: LoggerDsl.() -> Unit) =
+inline fun logger(name: String, block: LoggerDsl.() -> Unit) =
     LoggerDsl()
         .apply(block)
         .build(name)
 
 /** 构造日志修饰器 */
-fun loggerWapper(block: LoggerDsl.() -> Unit) =
+inline fun loggerWrapper(block: LoggerDsl.() -> Unit) =
     LoggerDsl()
         .apply(block)
-        .wapper
+        .wrapper

@@ -8,9 +8,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.concurrent.thread
 
-/** 默认日志文件夹路径 */
-internal val DefaultPath = System.getProperty("user.dir")
-
 // 日志路径设值器
 private val logPathSetter =
     RunOnce { path: String ->
@@ -25,7 +22,7 @@ private val logPathSetter =
  * 只能设置一次
  */
 var logPath: String
-    get() = logPathSetter(DefaultPath)!!
+    get() = logPathSetter(System.getProperty("user.dir") ?: "")!!
     set(value) {
         logPathSetter(value)
     }

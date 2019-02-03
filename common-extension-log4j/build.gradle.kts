@@ -10,12 +10,10 @@ val log4jVersion = "1.2.17"
 dependencies {
     implementation(kotlin("stdlib"))
     implementation(project(":common-concurrent"))
-    //interface
-    implementation("org.slf4j:slf4j-api:$slf4jVersion")
-    //adapter
-    implementation("org.slf4j:slf4j-log4j12:$slf4jVersion")
-    //impl
-    implementation("log4j:log4j:$log4jVersion")
+
+    implementation("org.slf4j", "slf4j-api", slf4jVersion)
+    implementation("org.slf4j", "slf4j-log4j12", slf4jVersion)
+    implementation("log4j", "log4j", log4jVersion)
 
     testImplementation("junit", "junit", "4.12")
 }
@@ -26,6 +24,7 @@ task<Jar>("sourcesJar") {
 
     from(sourceSets["main"].allSource)
 }
+
 configure<PublishExtension> {
     userOrg = "mechdancer"
     groupId = "org.mechdancer"

@@ -5,14 +5,14 @@ package org.mechdancer.common.extension
  *
  * 如果 [this] 为`真`则执行给定的 [action]。
  */
-fun Boolean.then(action: () -> Unit) = also { if (it) action() }
+inline fun Boolean.then(action: () -> Unit) = also { if (it) action() }
 
 /**
  * Performs the given [action] if [this] equals `false`.
  *
  * 如果 [this] 为`假`则执行给定的 [action]。
  */
-fun Boolean.otherwise(action: () -> Unit) = also { if (!it) action() }
+inline fun Boolean.otherwise(action: () -> Unit) = also { if (!it) action() }
 
 /**
  * Returns an instance of [Optional] encapsulated [this].
