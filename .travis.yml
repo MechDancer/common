@@ -10,20 +10,18 @@ before_install:
   - chmod a+x gradlew
 
 script:
-  # 清理、生成、测试、文档
-  - ./gradlew clean build
-  - ./gradlew dokka
+  - ./gradlew build dokka
   - ./gradlew jar website
   - cd ./docs
   - git init
   - git config user.name "MechDancerProject"
   - git config user.email "berberman@mechdancer.org"
+  - git add -A
+  - git commit -m "`curl -s http://whatthecommit.com/index.txt`"
   - git remote add origin https://${GitHubTokenAll}@github.com/MechDancer/common
   - git fetch origin gh-pages
   - git checkout -b gh-pages origin/gh-pages
   - git pull origin gh-pages
-  - git add -A
-  - git commit -m "doc updated ${(date "+%Y-%m-%d %H:%M:%S")}"
   - git push origin gh-pages
 
 before_cache:
