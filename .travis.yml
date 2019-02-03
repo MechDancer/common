@@ -13,7 +13,18 @@ script:
   # 清理、生成、测试、文档
   - ./gradlew clean build
   - ./gradlew dokka
-  - ./gradlew jar
+  - ./gradlew jar website
+  - cd ./docs
+  - git init
+  - git config user.name "MechDancerProject"
+  - git config user.email "berberman@mechdancer.org"
+  - git remote add origin https://${GitHubTokenAll}@github.com/MechDancer/common
+  - git fetch origin gh-pages
+  - git checkout -b gh-pages origin/gh-pages
+  - git pull origin gh-pages
+  - git add -A
+  - git commit -m "doc updated ${(date "+%Y-%m-%d %H:%M:%S")}"
+  - git push origin gh-pages
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -29,7 +40,7 @@ deploy:
     skip_cleanup: true
     file_glob:    true
     file:         "build/libs/*"
-    api_key:      $GitHubToken
+    api_key:      $GitHubTokenAll
     on:
       tags:       true
 
