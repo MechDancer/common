@@ -43,6 +43,16 @@ task<DokkaTask>("website") {
             .filter { it !== project }
             .flatMap { it.sourceSets["main"].allSource.srcDirs }
     outputDirectory = "$rootDir/docs"
+    finalizedBy("createJekyllConfig")
+}
+
+task("createJekyllConfig") {
+    group = "documentation"
+    doLast {
+        File("$rootDir/docs/_config.yml")
+            .also { it.createNewFile() }
+            .appendText("theme: jekyll-theme-hacker")
+    }
 }
 
 
