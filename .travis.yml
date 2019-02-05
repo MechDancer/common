@@ -19,6 +19,7 @@ script:
   - git add -A
   - git commit -m "`curl -s http://whatthecommit.com/index.txt`"
   - git remote add origin https://${GitHubTokenAll}@github.com/MechDancer/common
+  - git fetch origin gh-pages
   - git push origin gh-pages -f
 
 before_cache:
