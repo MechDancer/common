@@ -15,3 +15,10 @@ inline fun <reified T> Any?.cast() = this as T
  * 将一个实例转换到 [T] 表示的类型，其不是 [T] 实例或为 `null` 则返回 `null`。
  */
 inline fun <reified T> Any?.safeCast() = this as? T
+
+/**
+ * If [this] is `null`, use [value] instead.
+ *
+ * 如果 [this] 为 `null` 就用 [value] 替换它。
+ */
+fun <T> T.orDefault(value: T): T = this ?: value

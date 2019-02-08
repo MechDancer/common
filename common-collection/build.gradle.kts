@@ -5,10 +5,7 @@ apply {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
     implementation(project(":common-extension"))
-
-    testImplementation("junit", "junit", "4.12")
 }
 
 task<Jar>("sourcesJar") {

@@ -8,14 +8,11 @@ val slf4jVersion = "1.8.0-beta2"
 val log4jVersion = "1.2.17"
 
 dependencies {
-    implementation(kotlin("stdlib"))
     implementation(project(":common-concurrent"))
 
     implementation("org.slf4j", "slf4j-api", slf4jVersion)
     implementation("org.slf4j", "slf4j-log4j12", slf4jVersion)
     implementation("log4j", "log4j", log4jVersion)
-
-    testImplementation("junit", "junit", "4.12")
 }
 
 task<Jar>("sourcesJar") {

@@ -5,13 +5,8 @@ apply {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.1.1")
-
     implementation(project(":common-extension"))
-
-    testImplementation("junit", "junit", "4.12")
 }
 
 task<Jar>("sourcesJar") {

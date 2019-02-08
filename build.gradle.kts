@@ -1,4 +1,5 @@
 import org.jetbrains.dokka.gradle.DokkaTask
+import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 
@@ -16,7 +17,7 @@ buildscript {
     }
 }
 
-version = "v0.1.0-1"
+version = "v0.1.0-2"
 
 task<Delete>("clean") {
     group = "build"
@@ -36,6 +37,15 @@ subprojects {
         plugin("org.jetbrains.dokka")
         plugin("kotlin")
         plugin("java")
+    }
+
+    dependencies {
+        val kotlinVersion = getKotlinPluginVersion()
+
+        "implementation"("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", kotlinVersion)
+
+        "testImplementation"("junit:junit:4.12")
+        "testImplementation"("org.jetbrains.kotlin", "kotlin-test-junit", kotlinVersion)
     }
 
     tasks.withType<KotlinCompile> {
