@@ -1,8 +1,6 @@
 package org.mechdancer.common.extension.log4j
 
 import org.apache.log4j.*
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 
 /**
  * DSL supports creation of instance of type [org.apache.log4j.Logger].
@@ -63,7 +61,7 @@ class LoggerDsl {
     // 直接构造日志
     @PublishedApi
     internal fun build(name: String) =
-        LoggerFactory
+        LogManager
             .getLogger(name)
             .also(wrapper)
 }
