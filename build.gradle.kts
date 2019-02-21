@@ -2,9 +2,7 @@ import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-
 buildscript {
-
     repositories {
         mavenCentral()
         jcenter()
@@ -13,7 +11,7 @@ buildscript {
     dependencies {
         classpath("org.jetbrains.dokka:dokka-gradle-plugin:0.9.17")
         classpath("com.novoda:bintray-release:+")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.20")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.21")
     }
 }
 
@@ -44,7 +42,7 @@ subprojects {
 
         "implementation"("org.jetbrains.kotlin", "kotlin-stdlib-jdk8", kotlinVersion)
 
-        "testImplementation"("junit:junit:4.12")
+        "testImplementation"("junit", "junit", "4.12")
         "testImplementation"("org.jetbrains.kotlin", "kotlin-test-junit", kotlinVersion)
     }
 
@@ -80,5 +78,4 @@ subprojects {
     tasks["jar"].dependsOn("sourcesJar")
     tasks["jar"].dependsOn("javadocJar")
     tasks["jar"].finalizedBy("copyArtifacts")
-
 }
