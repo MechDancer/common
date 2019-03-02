@@ -10,7 +10,9 @@ before_install:
   - chmod a+x gradlew
 
 script:
-  - ./gradlew build dokka
+  - ./gradlew javadoc
+  - ./gradlew build
+  - ./gradlew common-all:build
   - ./gradlew jar website
   - cd ./docs
   - git init
