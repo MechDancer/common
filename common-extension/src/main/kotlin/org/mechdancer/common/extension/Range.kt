@@ -1,8 +1,5 @@
 package org.mechdancer.common.extension
 
-import kotlin.math.max
-import kotlin.math.min
-
 /** 闭区间长度 */
 val IntRange.length: Int get() = endInclusive - start
 
@@ -13,27 +10,11 @@ val LongRange.length: Long get() = endInclusive - start
 val ClosedFloatingPointRange<Double>.length: Double get() = endInclusive - start
 
 /** 限幅器 */
-fun IntRange.limit(x: Int): Int =
+fun <T : Comparable<T>> ClosedRange<T>.clamp(x: T): T =
     when {
         x < start        -> start
-        x > endInclusive -> endInclusive
-        else             -> x
-    }
-
-/** 限幅器 */
-fun LongRange.limit(x: Long): Long =
-    when {
-        x < start        -> start
-        x > endInclusive -> endInclusive
-        else             -> x
-    }
-
-/** 限幅器 */
-fun ClosedFloatingPointRange<Double>.limit(x: Double): Double =
-    when {
-        x < start        -> start
-        x > endInclusive -> endInclusive
-        else             -> x
+        x < endInclusive -> x
+        else             -> endInclusive
     }
 
 /** 调整周期函数到区间内 */
@@ -57,12 +38,14 @@ infix fun Double.extend(radius: Double): ClosedFloatingPointRange<Double> =
     this - radius..this + radius
 
 /** 并集 */
-operator fun ClosedFloatingPointRange<Double>.plus(other: ClosedFloatingPointRange<Double>) =
-    min(start, other.start)..max(endInclusive, other.endInclusive)
+operator fun <T : Comparable<T>>
+    ClosedFloatingPointRange<T>.plus(other: ClosedFloatingPointRange<T>) =
+    minOf(start, other.start)..maxOf(endInclusive, other.endInclusive)
 
 /** 交集 */
-operator fun ClosedFloatingPointRange<Double>.times(other: ClosedFloatingPointRange<Double>) =
-    max(start, other.start)..min(endInclusive, other.endInclusive)
+operator fun <T : Comparable<T>>
+    ClosedFloatingPointRange<T>.times(other: ClosedFloatingPointRange<T>) =
+    maxOf(start, other.start)..minOf(endInclusive, other.endInclusive)
 
 /**
  * 等分区间

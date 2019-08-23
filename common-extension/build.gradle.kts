@@ -6,7 +6,7 @@ apply {
 }
 
 task<Jar>("sourcesJar") {
-    classifier = "sources"
+    archiveClassifier.set("sources")
     group = "build"
 
     from(sourceSets["main"].allSource)
