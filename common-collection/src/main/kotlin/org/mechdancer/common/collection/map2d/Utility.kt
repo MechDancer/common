@@ -19,12 +19,12 @@ inline fun <T, U, V> mapValues(t: Iterable<T>, u: Iterable<U>, block: (T, U) -> 
     (t.toSet() descartes u.toSet()).map { (a, b) -> block(a, b) }
 
 /** 展开对称二维映射 */
-inline fun <T, V> map(set: Iterable<T>, block: (T, T) -> V): IMap2D<T, T, V> =
-    set.toSet().let { map(it, it, block) }
+inline infix fun <T, V> Iterable<T>.map2D(block: (T, T) -> V): IMap2D<T, T, V> =
+    toSet().let { map(it, it, block) }
 
 /** 展开可变二维映射 */
-fun <T, V> stretch2D(t: Iterable<T>, block: (T, T) -> V): ICompleteSymmetricMap2D<T, V> =
-    CompleteSymmetricPairMap2D(block).apply { putAll(t) }
+infix fun <T, V> Iterable<T>.stretch2D(block: (T, T) -> V): ICompleteSymmetricMap2D<T, V> =
+    CompleteSymmetricPairMap2D(block).apply { putAll(this@stretch2D) }
 
 /** 转不可变二维映射 */
 fun <T, U, V> IMap2D<T, U, V>.toMap2D(): IMap2D<T, U, V> =
