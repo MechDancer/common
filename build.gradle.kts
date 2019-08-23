@@ -37,7 +37,6 @@ allprojects {
         sourceCompatibility = "1.8"
         targetCompatibility = "1.8"
     }
-    tasks["jar"].dependsOn("sourcesJar")
 }
 
 subprojects {
@@ -69,6 +68,7 @@ subprojects {
     }
 
     tasks["javadoc"].dependsOn("dokka")
+    tasks["jar"].dependsOn("sourcesJar")
     tasks["jar"].dependsOn("javadocJar")
     tasks["jar"].finalizedBy("copyArtifacts")
 }
