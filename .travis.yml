@@ -10,8 +10,8 @@ before_install:
 
 script:
   - ./gradlew check
+  - ./gradlew common-all:fatjar
   - ./gradlew javadoc
-  - ./gradlew build
   - ./gradlew jar
   - ./gradlew fatjar
   - cd ./docs
