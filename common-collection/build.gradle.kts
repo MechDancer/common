@@ -2,7 +2,6 @@ plugins {
     `maven-publish`
 }
 
-
 dependencies {
     implementation(project(":common-extension"))
     implementation(kotlin("stdlib"))
@@ -23,6 +22,12 @@ val fat = tasks.register<Jar>("fatJar") {
     from({
         configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
     })
+}
+
+tasks.register("allJars") {
+    group = JavaBasePlugin.BUILD_TASK_NAME
+    description = "Assembles all jars in one task"
+    dependsOn(tasks["javadocJar"], sources, fat, tasks.jar, tasks["copyArtifacts"])
 }
 
 

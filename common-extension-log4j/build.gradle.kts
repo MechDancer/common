@@ -32,6 +32,12 @@ val fat = tasks.register<Jar>("fatJar") {
 }
 
 
+tasks.register("allJars") {
+    group = JavaBasePlugin.BUILD_TASK_NAME
+    description = "Assembles all jars in one task"
+    dependsOn(tasks["javadocJar"], sources, fat, tasks.jar, tasks["copyArtifacts"])
+}
+
 val rename = tasks.register("renamePomFile") {
     dependsOn(tasks.publishToMavenLocal)
     doLast {

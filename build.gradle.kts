@@ -64,7 +64,7 @@ subprojects {
         group = "build"
         archiveClassifier.set("javadoc")
         from("$buildDir/javadoc")
-        dependsOn("dokka")
+        dependsOn(tasks["javadoc"])
     }
 
     tasks.register<Copy>("copyArtifacts") {
@@ -74,13 +74,11 @@ subprojects {
     }
 
 
-    tasks.withType<DokkaTask> {
+    tasks.dokka.configure {
         outputFormat = "javadoc"
         outputDirectory = "$buildDir/javadoc"
     }
 
-    tasks["javadoc"].dependsOn("dokka")
-    tasks["jar"].dependsOn("sourcesJar")
-    tasks["jar"].dependsOn("javadocJar")
-    tasks["jar"].finalizedBy("copyArtifacts")
+    tasks["javadoc"].dependsOn(tasks.dokka)
+
 }

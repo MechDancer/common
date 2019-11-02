@@ -9,11 +9,10 @@ before_install:
   - chmod a+x gradlew
 
 script:
+  - ./gradlew build
   - ./gradlew check
-  - ./gradlew common-all:fatjar
-  - ./gradlew javadoc
-  - ./gradlew jar
-  - ./gradlew fatjar
+  - ./gradlew allJars
+  - ./gradlew website
   - cd ./docs
   - git init
   - git config user.name "MechDancerProject"

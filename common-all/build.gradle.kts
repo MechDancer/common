@@ -5,6 +5,14 @@ plugins {
 }
 
 
+tasks.build.configure {
+    mustRunAfter(
+        rootProject.subprojects
+            .filter { it !== project }
+            .map { it.tasks["build"] }
+    )
+}
+
 tasks.withType<DokkaTask> {
     outputFormat = "javadoc"
     outputDirectory = "$buildDir/javadoc"
@@ -34,6 +42,11 @@ val fat = tasks.register<Jar>("fatJar") {
         .filter { it.name.endsWith("jar") }
         .map { zipTree(it) }
         .forEach { from(it) }
+    mustRunAfter(
+        rootProject.subprojects
+            .filter { it !== project }
+            .map { it.tasks["fatJar"] }
+    )
 }
 
 tasks.jar.configure {
@@ -42,6 +55,18 @@ tasks.jar.configure {
         .flatMap { it.sourceSets["main"].output }
         .filter { it.exists() && it.isDirectory }
         .forEach { from(it) }
+    mustRunAfter(
+        rootProject.subprojects
+            .filter { it !== project }
+            .map { it.tasks["jar"] }
+    )
+}
+
+
+tasks.register("allJars") {
+    group = JavaBasePlugin.BUILD_TASK_NAME
+    description = "Assembles all jars in one task"
+    dependsOn(tasks["javadocJar"], sources, fat, tasks.jar, tasks["copyArtifacts"])
 }
 
 val rename = tasks.register("renamePomFile") {
