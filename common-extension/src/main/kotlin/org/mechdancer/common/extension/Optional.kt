@@ -24,7 +24,7 @@ inline class Optional<out T>
     val nonexistent get() = data is Void
 
     /**
-     * Performs the given [action] on encapsulated value if this instance [exist].
+     * Performs the given [action] on encapsulated value if this instance [existent].
      * Returns the original `Optional` unchanged.
      */
     inline fun then(action: (T) -> Any?) =
